@@ -1,0 +1,7 @@
+[alias]
+	co = checkout
+	ec = config --global -e
+	up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+	cob = checkout -b
+	cm = !git add -A && git commit -m
+	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
