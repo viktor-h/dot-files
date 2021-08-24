@@ -1,10 +1,7 @@
 autoload -Uz compinit && compinit
 
 # Promt
-#PS1="%1~ %# "
-
-# ssh bitbucket
-ssh-add -K ~/.ssh/mykey &> /dev/null
+PS1="%1~ %# "
 
 # Git
 autoload -Uz vcs_info
