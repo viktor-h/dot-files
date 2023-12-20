@@ -1,5 +1,7 @@
 autoload -Uz compinit && compinit
 
+VIM="nvim"
+
 # Promt
 PS1="%1~ %# "
 
