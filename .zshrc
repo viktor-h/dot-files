@@ -18,3 +18,7 @@ zstyle ':vcs_info:git:*' formats '%b'
 # Manually installed with: 
 # git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+export PATH="$HOME/.local/bin:$PATH"
+
+bindkey -s ^f "tmux-sessionizer\n"
