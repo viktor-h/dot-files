@@ -14,8 +14,8 @@ return {
 
         local on_attach = function()
 
-            -- set key bindings
-           keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=0})
+            keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=0})
+            keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0})
         end
 
         -- autocompletion assign it to all language servers below
