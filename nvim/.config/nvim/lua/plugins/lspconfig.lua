@@ -19,10 +19,10 @@ return {
             keymap.set("n", "K", vim.lsp.buf.hover, opts)
             keymap.set("n", "gd", vim.lsp.buf.definition, opts)
             keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-            keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+            keymap.set('n', 'gr', "<cmd>Telescope lsp_references<CR>", opts)
             keymap.set("n", " df", vim.diagnostic.goto_next, opts)
             keymap.set("n", " dp", vim.diagnostic.goto_prev, opts)
-            keymap.set("n", " dl", "<cmd>Telescope diagnostics<cr>", opts)
+            keymap.set("n", " dl", "<cmd>Telescope diagnostics<CR>", opts)
             keymap.set("n", " r", vim.lsp.buf.rename, opts)
             keymap.set('n', ' f', function()
                 vim.lsp.buf.format { async = true }
