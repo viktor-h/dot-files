@@ -20,6 +20,7 @@ return {
             keymap.set("n", " df", vim.diagnostic.goto_next, opts)
             keymap.set("n", " dp", vim.diagnostic.goto_prev, opts)
             keymap.set("n", " dl", "<cmd>Telescope diagnostics<CR>", opts)
+            keymap.set({"n", "i"}, "<C-k>", vim.lsp.buf.signature_help, opts)
             keymap.set("n", " r", vim.lsp.buf.rename, opts)
             keymap.set('n', ' f', function()
                 vim.lsp.buf.format { async = true }
@@ -29,14 +30,6 @@ return {
 
         -- autocompletion assign it to all language servers below
         local capabilities = cmp_nvim_lsp.default_capabilities()
-
-        -- lsp_signature setup
-        require "lsp_signature".on_attach({
-            bind = true, -- This is mandatory, otherwise border config won't get registered.
-            handler_opts = {
-                border = "rounded"
-            }
-        })
 
         -- configure language servers
         require("roslyn").setup({
