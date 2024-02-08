@@ -27,6 +27,7 @@ return {
             keymap.set('n', ' f', function()
                 vim.lsp.buf.format { async = true }
             end, opts)
+            keymap.set({ 'n', 'v' }, ' ca', vim.lsp.buf.code_action, opts)
 
         end
 
