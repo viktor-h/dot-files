@@ -24,8 +24,11 @@ return {
             keymap.set("n", " dp", vim.diagnostic.goto_prev, opts)
             keymap.set("n", " dl", "<cmd>Telescope diagnostics<cr>", opts)
             keymap.set("n", " r", vim.lsp.buf.rename, opts)
+            keymap.set('n', ' f', function()
+                vim.lsp.buf.format { async = true }
+            end, opts)
 
-       end
+        end
 
         -- autocompletion assign it to all language servers below
         local capabilities = cmp_nvim_lsp.default_capabilities()
