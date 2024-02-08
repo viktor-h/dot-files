@@ -12,10 +12,12 @@ return {
 
         local keymap = vim.keymap
 
-        local on_attach = function()
+        local on_attach = function(_, bufnr)
 
-            keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=0})
-            keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0})
+            local opts = { buffer = bufnr, noremap = true, silent = true }
+
+            keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+            keymap.set("n", "K", vim.lsp.buf.hover, opts)
        
             require "lsp_signature".on_attach({
                 bind = true, -- This is mandatory, otherwise border config won't get registered.
