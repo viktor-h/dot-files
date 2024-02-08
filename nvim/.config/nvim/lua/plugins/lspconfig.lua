@@ -5,7 +5,6 @@ return {
         "hrsh7th/cmp-nvim-lsp"
     },
     config = function()
-
         local lspconfig = require("lspconfig")
 
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -13,7 +12,6 @@ return {
         local keymap = vim.keymap
 
         local on_attach = function(_, bufnr)
-
             local opts = { buffer = bufnr, noremap = true, silent = true }
 
             keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -28,7 +26,6 @@ return {
                 vim.lsp.buf.format { async = true }
             end, opts)
             keymap.set({ 'n', 'v' }, ' ca', vim.lsp.buf.code_action, opts)
-
         end
 
         -- autocompletion assign it to all language servers below
@@ -41,13 +38,25 @@ return {
                 border = "rounded"
             }
         }, bufnr)
-        
+
         -- configure language servers
         require("roslyn").setup({
             dotnet_cmd = "dotnet",
             roslyn_version = "4.8.0-3.23475.7",
             on_attach = on_attach,
-            capabilities = capabilities 
+            capabilities = capabilities
+        })
+
+        lspconfig["lua_ls"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { "vim" },
+                    },
+                },
+            },
         })
     end,
 }
