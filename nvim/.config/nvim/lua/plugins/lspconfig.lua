@@ -19,6 +19,10 @@ return {
             keymap.set("n", "K", vim.lsp.buf.hover, opts)
             keymap.set("n", "gd", vim.lsp.buf.definition, opts)
             keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+            keymap.set("n", " df", vim.diagnostic.goto_next, opts)
+            keymap.set("n", " dp", vim.diagnostic.goto_prev, opts)
+            keymap.set("n", " dl", "<cmd>Telescope diagnostics<cr>", opts)
+            keymap.set("n", " r", vim.lsp.buf.rename, opts)
 
             require "lsp_signature".on_attach({
                 bind = true, -- This is mandatory, otherwise border config won't get registered.
