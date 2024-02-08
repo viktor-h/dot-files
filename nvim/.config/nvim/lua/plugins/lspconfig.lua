@@ -16,9 +16,10 @@ return {
 
             local opts = { buffer = bufnr, noremap = true, silent = true }
 
-            keymap.set("n", "gd", vim.lsp.buf.definition, opts)
             keymap.set("n", "K", vim.lsp.buf.hover, opts)
-       
+            keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+            keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+
             require "lsp_signature".on_attach({
                 bind = true, -- This is mandatory, otherwise border config won't get registered.
                 handler_opts = {
