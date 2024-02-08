@@ -25,17 +25,18 @@ return {
             keymap.set("n", " dl", "<cmd>Telescope diagnostics<cr>", opts)
             keymap.set("n", " r", vim.lsp.buf.rename, opts)
 
-            require "lsp_signature".on_attach({
-                bind = true, -- This is mandatory, otherwise border config won't get registered.
-                handler_opts = {
-                    border = "rounded"
-                }
-            }, bufnr)
-        end
+       end
 
         -- autocompletion assign it to all language servers below
         local capabilities = cmp_nvim_lsp.default_capabilities()
 
+        -- lsp_signature setup
+        require "lsp_signature".on_attach({
+            bind = true, -- This is mandatory, otherwise border config won't get registered.
+            handler_opts = {
+                border = "rounded"
+            }
+        }, bufnr)
         
         -- configure language servers
         require("roslyn").setup({
