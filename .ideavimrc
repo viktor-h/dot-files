@@ -1,0 +1,29 @@
+let mapleader = " "
+inoremap <C-c> <Esc>
+
+set relativenumber number
+set nu rnu
+set scrolloff=8
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+vnoremap K :m '>+1<CR>gv=gv
+vnoremap J :m '<-2<CR>gv=gv
+
+map <leader>pf <Action>(GotoFile)
+map <leader>ps <Action>(FindInPath)
+map <leader>gr <Action>(FindUsages)
+map <leader>gd <Action>(GotoDeclaration)
+map <leader>gi <Action>(ReSharperGotoImplementation)
+map <leader>f <Action>(ReformatCode)
+map <leader>ca <Action>(ShowIntentionActions)
+
+map <leader>df <Action>(ReSharperGotoNextErrorInSolution)
+map <leader>dp <Action>(ReSharperGotoPrevErrorInSolution)
+map <leader>r <Action>(RenameElement)
+
+map <leader>t <Action>(RiderUnitTestRunContextAction)
+map <leader>a <Action>(RiderUnitTestRunSolutionAction)
+
+set NERDTree
+map <leader>pv :NERDTreeToggle<CR>
+
