@@ -1,3 +1,5 @@
+" defaults write com.jetbrains.rider ApplePressAndHoldEnabled -bool false
+
 let mapleader = " "
 inoremap <C-c> <Esc>
 
