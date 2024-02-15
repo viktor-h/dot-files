@@ -10,9 +10,11 @@ return {
 
         local keymap = vim.keymap
 
-        local on_attach = function(_, bufnr)
+        local on_attach = function(client, bufnr)
             local opts = { buffer = bufnr, noremap = true, silent = true }
 
+            -- disable semantic tokens from lsp
+            -- client.server_capabilities.semanticTokensProvider = nil
             keymap.set("n", "K", vim.lsp.buf.hover, opts)
             keymap.set("n", "gd", vim.lsp.buf.definition, opts)
             keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
@@ -20,7 +22,7 @@ return {
             keymap.set("n", " df", vim.diagnostic.goto_next, opts)
             keymap.set("n", " dp", vim.diagnostic.goto_prev, opts)
             keymap.set("n", " dl", "<cmd>Telescope diagnostics<CR>", opts)
-            keymap.set({"n", "i"}, "<C-k>", vim.lsp.buf.signature_help, opts)
+            keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, opts)
             keymap.set("n", " r", vim.lsp.buf.rename, opts)
             keymap.set('n', ' f', function()
                 vim.lsp.buf.format { async = true }
