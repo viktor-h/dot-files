@@ -25,5 +25,11 @@
     hunk-header-decoration-style = yellow box
 [merge]
     conflictstyle = diff3
+    tool = vimdiff
+[mergetool]
+    prompt = false
+    keepBackup = false
+[mergetool "vimdiff"]
+    path = nvim
 [diff]
     colorMoved = default
