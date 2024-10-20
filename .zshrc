@@ -2,6 +2,10 @@ autoload -Uz compinit && compinit
 
 VIM="nvim"
 
+# Enable vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
 # Promt
 PS1="%1~ %# "
 
