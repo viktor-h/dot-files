@@ -54,5 +54,12 @@ return {
         lspconfig["ts_ls"].setup({
             capabilities = capabilities
         })
+
+        lspconfig.clangd.setup({
+            cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=verbose' },
+            init_options = {
+                fallbackFlags = { '-std=c++17' },
+            },
+        })
     end,
 }
