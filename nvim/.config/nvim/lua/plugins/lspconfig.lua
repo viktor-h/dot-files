@@ -40,7 +40,7 @@ return {
         -- autocompletion assign it to all language servers below
         local capabilities = cmp_nvim_lsp.default_capabilities()
 
-        lspconfig["lua_ls"].setup({
+        vim.lsp.config["lua_ls"] = {
             capabilities = capabilities,
             settings = {
                 Lua = {
@@ -49,18 +49,18 @@ return {
                     },
                 },
             },
-        })
+        }
 
-        lspconfig["ts_ls"].setup({
+        vim.lsp.config["ts_ls"] = {
             capabilities = capabilities
-        })
+        }
 
-        lspconfig.clangd.setup({
+        vim.lsp.config.clangd = {
             capabilities = capabilities,
             cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=verbose' },
             init_options = {
                 fallbackFlags = { '-std=c++17' },
             },
-        })
+        }
     end,
 }
