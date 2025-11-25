@@ -14,3 +14,11 @@ vim.opt.wrap = false
 
 vim.opt.incsearch = true
 vim.opt.hlsearch = false
+
+vim.diagnostic.config({
+  virtual_lines = {
+    current_line = true
+  }
+})
+
+vim.opt.winborder = "rounded"
