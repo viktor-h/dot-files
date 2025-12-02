@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Toggle Lenovo conservation mode
+
+conservation() {
+    local path="/sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
+
+    case "$1" in
+        on)
+            echo 1 | sudo tee "$path" > /dev/null
+            ;;
+        off)
+            echo 0 | sudo tee "$path" > /dev/null
+            ;;
+        *)
+            echo "Usage: conservation {on|off}"
+            return 1
+            ;;
+    esac
+}
