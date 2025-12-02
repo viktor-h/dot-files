@@ -1,6 +1,6 @@
 [includeIf "gitdir:~/code/"]
     path = .gitconfig-work
-[includeIf "gitdir:~/dev/"]
+[includeIf "gitdir:~/Dev/"]
     path = .gitconfig-personal
 
 
