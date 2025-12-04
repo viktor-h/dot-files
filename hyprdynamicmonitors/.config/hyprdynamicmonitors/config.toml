@@ -1,0 +1,75 @@
+[general]
+destination = "$HOME/.config/hypr/monitors.conf"
+
+[lid_events]
+
+# how to query for the current up-to-date lid state
+[lid_events.dbus_query_object]
+destination = "org.freedesktop.UPower"
+path = "/org/freedesktop/UPower"
+method = "org.freedesktop.DBus.Properties.Get"
+# When the call returns a value:
+# $ gdbus call --system --dest org.freedesktop.UPower --object-path /org/freedesktop/UPower --method org.freedesktop.DBus.Properties.Get org.freedesktop.UPower LidIsClosed
+# $ (<false>,)
+# the received variant is cast as string and compared with the following value, when the comparison is true the internal state will reflect the lid closing event
+expected_lid_closing_value = "true"
+
+[[lid_events.dbus_query_object.args]]
+arg = "org.freedesktop.UPower"
+
+[[lid_events.dbus_query_object.args]]
+arg = "LidIsClosed"
+
+# which signals to match
+[[lid_events.dbus_signal_match_rules]]
+interface = "org.freedesktop.DBus.Properties"
+object_path = "/org/freedesktop/UPower"
+member = "PropertiesChanged"
+
+# receive filters
+[[lid_events.dbus_signal_receive_filters]]
+name = "org.freedesktop.DBus.Properties.PropertiesChanged"
+body = "LidIsClosed"
+
+# Lid closed
+[profiles.lid_closed]
+config_file = "hyprconfigs/closed.conf"
+config_file_type = "static"
+
+[profiles.lid_closed.conditions]
+lid_state = "Closed"
+
+[[profiles.lid_closed.conditions.required_monitors]]
+name = "eDP-1"
+
+# Lid opened
+[profiles.lid_opened]
+config_file = "hyprconfigs/opened.conf"
+config_file_type = "static"
+
+[profiles.lid_opened.conditions]
+lid_state = "Opened"
+
+[[profiles.lid_opened.conditions.required_monitors]]
+name = "eDP-1"
+
+# -- START: laptop_disabled --
+[profiles.laptop_disabled]
+config_file = "hyprconfigs/laptop_disabled.go.tmpl"
+config_file_type = "template"
+
+[[profiles.laptop_disabled.conditions.required_monitors]]
+name = "eDP-1"
+
+[[profiles.laptop_disabled.conditions.required_monitors]]
+description = "Lenovo Group Limited LEN P27h-10 0x01010101"
+# -- END: laptop_disabled --
+
+# -- START: laptop_enabled --
+[profiles.laptop_enabled]
+config_file = "hyprconfigs/laptop_enabled.go.tmpl"
+config_file_type = "template"
+
+[[profiles.laptop_enabled.conditions.required_monitors]]
+name = "eDP-1"
+# -- END: laptop_enabled --
