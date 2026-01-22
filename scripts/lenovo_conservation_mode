@@ -12,8 +12,15 @@ conservation() {
         off)
             echo 0 | sudo tee "$path" > /dev/null
             ;;
+        status)
+            if [ "$(cat "$path")" -eq 1 ]; then
+                echo "on"
+            else
+                echo "off"
+            fi
+            ;;
         *)
-            echo "Usage: conservation {on|off}"
+            echo "Usage: conservation {on|off|status}"
             return 1
             ;;
     esac
