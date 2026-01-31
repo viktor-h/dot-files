@@ -7,7 +7,7 @@ if not vim.loop.fs_stat(lazypath) then
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",     -- latest stable release
+    "--branch=stable", -- latest stable release
     lazypath,
   })
 end
@@ -38,11 +38,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     keymap.set("n", "<leader>dp", function()
       vim.diagnostic.jump({ count = -1 })
     end, opts)
-    keymap.set("n", " dl", "<cmd>FzfLua diagnostics_document<CR>", opts)
+    keymap.set("n", " dl", "<c_md>FzfLua diagnostics_document<CR>", opts)
     keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, opts)
     keymap.set("n", " r", vim.lsp.buf.rename, opts)
     keymap.set('n', ' f', function()
-      vim.lsp.buf.format { async = true }
+      require("conform").format { lsp_fallback = true }
     end, opts)
     keymap.set({ 'n', 'v' }, ' ca', vim.lsp.buf.code_action, opts)
   end,
