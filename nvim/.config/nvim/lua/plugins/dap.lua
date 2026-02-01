@@ -1,7 +1,6 @@
 return {
   {
     "mfussenegger/nvim-dap",
-    lazy = true,
     dependencies = { "rcarriga/nvim-dap-ui" },
     config = function()
       local dap, dapui = require("dap"), require("dapui")
@@ -17,13 +16,15 @@ return {
       dap.adapters.netcoredbg = netcoredbg_adapter -- needed for normal debugging
       dap.adapters.coreclr = netcoredbg_adapter    -- needed for unit test debugging
 
+      local dotnet = require("custom.nvim-dap-dotnet-dll-hunter")
+
       dap.configurations.cs = {
         {
           type = "coreclr",
           name = "launch - netcoredbg",
           request = "launch",
           program = function()
-            return vim.fn.input("Path to dll: ", vim.fn.getcwd() .. "/bin/Debug/", "file")
+            return dotnet.build_dll_path()
           end,
         },
       }
@@ -57,6 +58,9 @@ return {
       vim.keymap.set("n", "<leader>dr", dap.repl.toggle, { desc = "Toggle DAP REPL" })
       vim.keymap.set("n", "<leader>dj", dap.down, { desc = "Go down stack frame" })
       vim.keymap.set("n", "<leader>dk", dap.up, { desc = "Go up stack frame" })
+      vim.keymap.set("n", "<space>de", function()
+        dap.eval(nil, { enter = true })
+      end, { desc = "Eval under cursor" })
 
       vim.fn.sign_define('DapBreakpoint',
         {
