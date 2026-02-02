@@ -27,15 +27,15 @@ return {
 
     vim.keymap.set(
       "n",
-      "<leader>dt",
+      "<leader>td",
       function()
-        neotest.run.run({ strategy = "dap" })
+        neotest.run.run({ suite = false, strategy = "dap" })
       end,
       { desc = "Debug nearest test" }
     )
     vim.keymap.set(
       "n",
-      "<leader>t",
+      "<leader>tn",
       function()
         neotest.run.run()
       end,
@@ -43,7 +43,7 @@ return {
     )
     vim.keymap.set(
       "n",
-      "<leader>T",
+      "<leader>tf",
       function()
         neotest.run.run(vim.fn.expand("%"))
       end,
@@ -58,7 +58,10 @@ return {
       { desc = "Toggle test summary" }
     )
     vim.keymap.set("n", "<leader>ta", function()
-      require("neotest").run.run(vim.fn.getcwd())
+      neotest.run.run(vim.fn.getcwd())
     end, { desc = "Run all tests (suite)" })
+    vim.keymap.set("n", "<leader>to", function()
+      neotest.output.open()
+    end, { desc = "Open test output" })
   end
 }
