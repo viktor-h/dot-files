@@ -43,4 +43,10 @@ return {
       desc = "Global search",
     },
   },
+  config = function()
+    require("fzf-lua").setup()
+    local config = require("fzf-lua.config")
+    local actions = require("trouble.sources.fzf").actions
+    config.defaults.actions.files["ctrl-t"] = actions.open
+  end
 }
