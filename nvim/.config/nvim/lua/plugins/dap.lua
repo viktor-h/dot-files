@@ -59,7 +59,7 @@ return {
       vim.keymap.set("n", "<leader>dj", dap.down, { desc = "Go down stack frame" })
       vim.keymap.set("n", "<leader>dk", dap.up, { desc = "Go up stack frame" })
       vim.keymap.set("n", "<space>de", function()
-        dap.eval(nil, { enter = true })
+        dapui.eval(nil, { enter = true })
       end, { desc = "Eval under cursor" })
 
       vim.fn.sign_define('DapBreakpoint',
