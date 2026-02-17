@@ -1,4 +1,4 @@
-/usr/bin/env bash
+#!/usr/bin/env bash
 
 set -euo pipefail
 
@@ -20,10 +20,10 @@ setup_panes() {
   # pane 0 = top-left, pane 1 = top-right, pane 2 = bottom
   tmux send-keys -t "$session:$window.0" 'nvim' C-m
   # Using nvim opencode we can start opencode from inside nvim in a tmux pane
-  # tmux send-keys -t "$session:$window.1" 'opencode' C-m
+  tmux send-keys -t "$session:$window.1" 'opencode --port' C-m
 
-  # bottom pane ~30% height (top panes get ~70%)
-  tmux resize-pane -t "$session:$window.2" -y '30%'
+  # bottom pane ~25% height (top panes get ~65%)
+  tmux resize-pane -t "$session:$window.2" -y '25%'
 
   # opencode pane ~40% width (nvim gets ~60%)
   tmux resize-pane -t "$session:$window.1" -x '40%'
