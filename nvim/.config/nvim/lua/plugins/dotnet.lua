@@ -6,6 +6,13 @@ return {
     opts = {
       -- your configuration comes here; leave empty for default settings
     },
+    -- init = function()
+    --   vim.lsp.config("roslyn", {
+    --     cmd_env = {
+    --       TMPDIR = vim.fn.resolve(vim.env.TMPDIR)
+    --     },
+    --   })
+    -- end
   },
   -- {
   --   "GustavEikaas/easy-dotnet.nvim",
