@@ -4,6 +4,8 @@ return {
     ---@module 'roslyn.config'
     ---@type RoslynNvimConfig
     opts = {
+      -- Use Roslyn's file watching for better performance
+      filewatching = "roslyn",
       -- your configuration comes here; leave empty for default settings
     },
     -- init = function()
