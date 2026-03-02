@@ -6,5 +6,6 @@ return {
       cs = { "csharpier" },
       csproj = { "csharpier" },
     },
+    lsp_format = "fallback",
   },
 }

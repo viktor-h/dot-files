@@ -15,6 +15,12 @@ vim.opt.wrap = false
 vim.opt.incsearch = true
 vim.opt.hlsearch = false
 
+vim.opt.autoread = true
+vim.opt.updatetime = 4000
+vim.api.nvim_create_autocmd("CursorHold", {
+  command = "checktime",
+})
+
 vim.diagnostic.config({
   virtual_lines = {
     current_line = true
