@@ -98,3 +98,11 @@ vim.lsp.enable("lua_ls")
 vim.lsp.enable("gopls")
 vim.lsp.enable("vtsls")
 vim.lsp.enable("html")
+
+
+vim.diagnostic.config({
+  virtual_text = false,  -- show inline messages
+  signs = true,         -- show signs in the gutter
+  underline = false,     -- underline problematic text
+  severity_sort = true,     -- sort diagnostics by severity
+})
