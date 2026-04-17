@@ -15,9 +15,14 @@ vim.opt.wrap = false
 vim.opt.incsearch = true
 vim.opt.hlsearch = false
 
+vim.opt.cursorline = true
+
 vim.opt.autoread = true
 vim.opt.updatetime = 4000
-vim.api.nvim_create_autocmd("CursorHold", {
+-- vim.api.nvim_create_autocmd("CursorHold", {
+--   command = "checktime",
+-- })
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
   command = "checktime",
 })
 

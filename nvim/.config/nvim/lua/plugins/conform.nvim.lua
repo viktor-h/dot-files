@@ -5,6 +5,7 @@ return {
     formatters_by_ft = {
       cs = { "csharpier" },
       csproj = { "csharpier" },
+      xml = { "csharpier" }
     },
     lsp_format = "fallback",
   },

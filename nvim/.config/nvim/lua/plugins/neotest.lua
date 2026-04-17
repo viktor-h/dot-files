@@ -12,14 +12,18 @@ return {
     summary = {
       open = 'botright vsplit | vertical resize 80',
     },
-    -- discovery = {
-    --   -- Drastically improve performance in ginormous projects by
-    --   -- only AST-parsing the currently opened buffer.
-    --   enabled = false,
-    --   -- Number of workers to parse files concurrently.
-    --   -- A value of 0 automatically assigns number based on CPU.
-    --   -- Set to 1 if experiencing lag.
-    --   concurrent = 1,
+    discovery = {
+      -- Drastically improve performance in ginormous projects by
+      -- only AST-parsing the currently opened buffer.
+      enabled = true,
+      -- Number of workers to parse files concurrently.
+      -- A value of 0 automatically assigns number based on CPU.
+      -- Set to 1 if experiencing lag.
+      concurrent = 1
+    },
+    running = {
+      concurrent = false
+    }
   },
   config = function(_, opts)
     local neotest = require("neotest")
