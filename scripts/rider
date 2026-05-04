@@ -1,3 +1,5 @@
 #!/bin/sh
 
-find . -iname "*.sln" | head -n 1 | xargs -I {} open -na rider --args "{}"
+search_path="${1:-.}"
+
+find "$search_path" -iname "*.sln" | head -n 1 | xargs -I {} open -na rider --args "{}"
