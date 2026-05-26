@@ -5,7 +5,10 @@ return {
     config = function()
       require("modus-themes").setup({
         style = "auto", -- Always use modus_operandi regardless of `vim.o.background`
-        variant = "tinted", -- Use deuteranopia variant
+        variants = {
+          modus_operandi = "tinted",
+          modus_vivendi = "tinted",
+        },
         styles = {
           functions = { italic = true }, -- Enable italics for functions
         },
