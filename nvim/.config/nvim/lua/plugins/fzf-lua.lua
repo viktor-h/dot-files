@@ -1,6 +1,7 @@
 return {
   "ibhagwan/fzf-lua",
   opts = {},
+  cmd = "FzfLua",
   keys = {
     {
       "<leader>pf",

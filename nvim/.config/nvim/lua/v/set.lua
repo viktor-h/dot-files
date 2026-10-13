@@ -19,11 +19,15 @@ vim.opt.cursorline = true
 
 vim.opt.autoread = true
 vim.opt.updatetime = 4000
--- vim.api.nvim_create_autocmd("CursorHold", {
---   command = "checktime",
--- })
-vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+-- Reload buffers when the underlying file changes on disk.
+-- FocusGained/BufEnter cover switching in; CursorHold(I) cover staying put
+-- (fires after 'updatetime' of inactivity).
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
   command = "checktime",
+})
+-- Notify after an external change is auto-loaded into the buffer.
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+  command = "echohl WarningMsg | echo 'File changed on disk, buffer reloaded' | echohl None",
 })
 
 vim.diagnostic.config({

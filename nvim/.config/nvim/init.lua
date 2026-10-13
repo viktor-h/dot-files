@@ -30,7 +30,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     keymap.set("n", "K", vim.lsp.buf.hover, opts)
     keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-    keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+    keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations<CR>", opts)
     keymap.set('n', 'gr', "<cmd>FzfLua lsp_references<CR>", opts)
     keymap.set("n", "<leader>df", function()
       vim.diagnostic.jump({ count = 1 })
