@@ -53,6 +53,17 @@ vim.lsp.config('buf-lsp', {
   root_markers = { 'buf.yaml', '.git' },
 })
 
+vim.filetype.add({
+  extension = {
+    bicep = 'bicep',
+    bicepparam = 'bicep-params',
+  },
+})
+
+vim.lsp.config('bicep', {
+  cmd = { vim.fn.expand('~/.local/share/nvim/mason/bin/bicep-lsp') },
+})
+
 vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
@@ -98,11 +109,3 @@ vim.lsp.enable("lua_ls")
 vim.lsp.enable("gopls")
 vim.lsp.enable("vtsls")
 vim.lsp.enable("html")
-
-
-vim.diagnostic.config({
-  virtual_text = false,  -- show inline messages
-  signs = true,         -- show signs in the gutter
-  underline = false,     -- underline problematic text
-  severity_sort = true,     -- sort diagnostics by severity
-})

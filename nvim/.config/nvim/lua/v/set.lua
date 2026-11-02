@@ -31,9 +31,11 @@ vim.api.nvim_create_autocmd("FileChangedShellPost", {
 })
 
 vim.diagnostic.config({
-  virtual_lines = {
-    current_line = true
-  }
+  virtual_lines = false,
+  virtual_text = false,
+  signs = true,
+  underline = false,
+  severity_sort = true,
 })
 
 vim.opt.winborder = "rounded"
